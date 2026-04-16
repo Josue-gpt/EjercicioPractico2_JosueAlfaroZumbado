@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h4 class="text-primary mb-3">Consultas de Eventos</h4>
+
+        <form th:action="@{/consultas/buscar}" method="get" class="row g-2 mb-3">
+
+            <div class="col-md-8">
+                <input class="form-control" name="nombre" placeholder="Buscar evento">
+            </div>
+
+            <div class="col-md-4">
+                <button class="btn btn-primary w-100">Buscar</button>
+            </div>
+
+        </form>
+
+        <a class="btn btn-dark mb-3" th:href="@{/consultas/activos}">
+            Ver eventos activos
+        </a>
+
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="e : ${eventos}">
+                    <td th:text="${e.nombre}"></td>
+                    <td th:text="${e.fecha}"></td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

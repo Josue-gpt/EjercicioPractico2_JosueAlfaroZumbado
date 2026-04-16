@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <!-- TÍTULO -->
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">Sistema de Gestión de Eventos</h2>
+        <p class="text-muted">
+            Administra usuarios, roles y eventos de manera sencilla y organizada
+        </p>
+    </div>
+
+    <!-- TARJETAS -->
+    <div class="row g-4">
+
+        <!-- USUARIOS -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-3">
+                <h4 class="text-primary">Usuarios</h4>
+                <p class="text-muted">Gestiona cuentas del sistema</p>
+                <a class="btn btn-primary" th:href="@{/usuario/lista}">
+                    Ir a Usuarios
+                </a>
+            </div>
+        </div>
+
+        <!-- ROLES -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-3">
+                <h4 class="text-primary">Roles</h4>
+                <p class="text-muted">Controla permisos del sistema</p>
+                <a class="btn btn-dark" th:href="@{/rol/lista}">
+                    Ir a Roles
+                </a>
+            </div>
+        </div>
+
+        <!-- EVENTOS -->
+        <div class="col-md-4">
+            <div class="card shadow text-center p-3">
+                <h4 class="text-primary">Eventos</h4>
+                <p class="text-muted">Administra eventos disponibles</p>
+                <a class="btn btn-primary" th:href="@{/evento/lista}">
+                    Ir a Eventos
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- SEGUNDA FILA -->
+    <div class="row g-4 mt-2">
+
+        <!-- CONSULTAS -->
+        <div class="col-md-6">
+            <div class="card shadow text-center p-3">
+                <h4 class="text-primary">Consultas</h4>
+                <p class="text-muted">Busca eventos y revisa información</p>
+                <a class="btn btn-dark" th:href="@{/consultas}">
+                    Ir a Consultas
+                </a>
+            </div>
+        </div>
+
+        <!-- INFO -->
+        <div class="col-md-6">
+            <div class="card shadow p-3">
+                <h5 class="text-primary">Información del sistema</h5>
+                <ul class="text-muted">
+                    <li>Gestión completa de usuarios</li>
+                    <li>Control de roles y permisos</li>
+                    <li>Administración de eventos</li>
+                    <li>Consultas dinámicas</li>
+                    <li>Seguridad con Spring Security</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

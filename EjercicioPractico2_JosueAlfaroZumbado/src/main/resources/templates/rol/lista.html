@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-primary fw-bold">Gestión de Roles</h4>
+
+            <a class="btn btn-primary" th:href="@{/rol/nuevo}">
+                + Nuevo Rol
+            </a>
+        </div>
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="r : ${roles}">
+                    <td th:text="${r.id}"></td>
+
+                    <td class="fw-semibold" th:text="${r.nombre}"></td>
+
+                    <td class="text-center">
+                        <a class="btn btn-sm btn-primary me-1"
+                           th:href="@{/rol/editar/{id}(id=${r.id})}">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-sm btn-dark"
+                           th:href="@{/rol/eliminar/{id}(id=${r.id})}">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h4 class="text-primary mb-3">Formulario de Usuario</h4>
+
+        <!-- 🔥 IMPORTANTE -->
+        <form th:action="@{/usuario/guardar}" th:object="${usuario}" method="post">
+
+            <!-- ID oculto -->
+            <input type="hidden" th:field="*{id}"/>
+
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label class="fw-semibold">Nombre</label>
+                <input class="form-control"
+                       th:field="*{nombre}"
+                       placeholder="Nombre completo"
+                       required>
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3">
+                <label class="fw-semibold">Email</label>
+                <input class="form-control"
+                       type="email"
+                       th:field="*{email}"
+                       placeholder="Correo electrónico"
+                       required>
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3">
+                <label class="fw-semibold">Contraseña</label>
+                <input class="form-control"
+                       type="password"
+                       th:field="*{password}"
+                       placeholder="Contraseña"
+                       required>
+            </div>
+
+            <!-- 🔥 SELECT CORRECTO (AQUÍ ESTABA TU ERROR) -->
+            <div class="mb-3">
+                <label class="fw-semibold">Rol</label>
+
+                <select class="form-control" th:field="*{rol.id}" required>
+
+                    <option value="">Seleccione un rol</option>
+
+                    <option th:each="r : ${roles}"
+                            th:value="${r.id}"
+                            th:text="${r.nombre}">
+                    </option>
+
+                </select>
+            </div>
+
+            <!-- Activo -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" th:field="*{activo}">
+                <label class="form-check-label">Usuario activo</label>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary">Guardar</button>
+                <a class="btn btn-dark" th:href="@{/usuario/lista}">Cancelar</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

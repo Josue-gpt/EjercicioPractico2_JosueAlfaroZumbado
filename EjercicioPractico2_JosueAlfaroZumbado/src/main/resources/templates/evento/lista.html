@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <div class="d-flex justify-content-between mb-3">
+            <h4 class="text-primary">Eventos</h4>
+
+            <a class="btn btn-primary" th:href="@{/evento/nuevo}">
+                + Nuevo Evento
+            </a>
+        </div>
+
+        <table class="table table-hover">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Fecha</th>
+                    <th>Capacidad</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="e : ${eventos}">
+                    <td th:text="${e.nombre}"></td>
+                    <td th:text="${e.fecha}"></td>
+                    <td th:text="${e.capacidad}"></td>
+
+                    <td>
+                        <a class="btn btn-sm btn-primary"
+                           th:href="@{/evento/editar/{id}(id=${e.id})}">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-sm btn-dark"
+                           th:href="@{/evento/eliminar/{id}(id=${e.id})}">
+                            Eliminar
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

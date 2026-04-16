@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <div class="d-flex justify-content-between mb-3">
+            <h4 class="text-primary">Usuarios</h4>
+
+            <a class="btn btn-primary" th:href="@{/usuario/nuevo}">
+                + Nuevo Usuario
+            </a>
+        </div>
+
+        <table class="table table-hover align-middle">
+
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                    <th>Rol</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr th:each="u : ${usuarios}">
+                    <td th:text="${u.nombre}"></td>
+                    <td th:text="${u.email}"></td>
+                    <td th:text="${u.rol.nombre}"></td>
+
+                    <td class="text-center">
+
+                        <a class="btn btn-sm btn-primary me-1"
+                           th:href="@{/usuario/editar/{id}(id=${u.id})}">
+                            Editar
+                        </a>
+
+                        <a class="btn btn-sm btn-dark"
+                           th:href="@{/usuario/eliminar/{id}(id=${u.id})}">
+                            Eliminar
+                        </a>
+
+                    </td>
+                </tr>
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

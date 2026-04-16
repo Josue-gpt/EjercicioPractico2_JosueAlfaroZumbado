@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head :: head"></head>
+
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+
+<div class="container mt-4">
+
+    <div class="card shadow p-4">
+
+        <h4 class="text-primary mb-3">Formulario de Evento</h4>
+
+        <form th:action="@{/evento/guardar}" th:object="${evento}" method="post">
+
+            <input type="hidden" th:field="*{id}"/>
+
+            <!-- Nombre -->
+            <div class="mb-3">
+                <label class="fw-semibold">Nombre</label>
+                <input class="form-control" th:field="*{nombre}" placeholder="Nombre del evento" required>
+            </div>
+
+            <!-- Descripción -->
+            <div class="mb-3">
+                <label class="fw-semibold">Descripción</label>
+                <textarea class="form-control" th:field="*{descripcion}" rows="3"
+                          placeholder="Descripción del evento"></textarea>
+            </div>
+
+            <!-- Fecha -->
+            <div class="mb-3">
+                <label class="fw-semibold">Fecha</label>
+                <input type="date" class="form-control" th:field="*{fecha}" required>
+            </div>
+
+            <!-- Capacidad -->
+            <div class="mb-3">
+                <label class="fw-semibold">Capacidad</label>
+                <input type="number" class="form-control" th:field="*{capacidad}" placeholder="Capacidad máxima" required>
+            </div>
+
+            <!-- Activo -->
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" th:field="*{activo}">
+                <label class="form-check-label">Evento activo</label>
+            </div>
+
+            <!-- Botones -->
+            <div class="d-flex justify-content-between">
+                <button class="btn btn-primary">Guardar</button>
+                <a class="btn btn-dark" th:href="@{/evento/lista}">Cancelar</a>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+</html>

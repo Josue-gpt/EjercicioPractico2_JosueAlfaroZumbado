@@ -1,0 +1,80 @@
+<nav th:fragment="navbar"
+     xmlns:th="http://www.thymeleaf.org"
+     xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+     class="navbar navbar-expand-lg navbar-dark">
+
+    <div class="container-fluid">
+
+        <a class="navbar-brand fw-bold" th:href="@{/}">
+            Eventos
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-between" id="menu">
+
+            <!-- IZQUIERDA -->
+            <div class="navbar-nav">
+
+                <!-- 🔥 SOLO ADMIN -->
+                <a sec:authorize="hasRole('ADMIN')"
+                   class="nav-link text-white"
+                   th:href="@{/usuario/lista}">
+                    Usuarios
+                </a>
+
+                <a sec:authorize="hasRole('ADMIN')"
+                   class="nav-link text-white"
+                   th:href="@{/rol/lista}">
+                    Roles
+                </a>
+
+                <!-- 🔥 ADMIN Y ORGANIZADOR -->
+                <a sec:authorize="hasAnyRole('ADMIN','ORGANIZADOR')"
+                   class="nav-link text-white"
+                   th:href="@{/evento/lista}">
+                    Eventos
+                </a>
+
+                <!-- 🔥 TODOS LOS LOGUEADOS -->
+                <a sec:authorize="isAuthenticated()"
+                   class="nav-link text-white"
+                   th:href="@{/consultas}">
+                    Consultas
+                </a>
+
+            </div>
+
+            <!-- DERECHA -->
+            <div class="d-flex align-items-center gap-2">
+
+                <!-- EMAIL -->
+                <span sec:authorize="isAuthenticated()" class="text-white fw-semibold">
+                    <span sec:authentication="name"></span>
+                </span>
+
+                <!-- LOGIN -->
+                <a sec:authorize="!isAuthenticated()"
+                   class="btn btn-light"
+                   th:href="@{/login}">
+                    Iniciar sesión
+                </a>
+
+                <!-- LOGOUT -->
+                <form sec:authorize="isAuthenticated()"
+                      th:action="@{/logout}"
+                      method="post"
+                      style="display:inline;">
+                    <button class="btn btn-dark">
+                        Salir
+                    </button>
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</nav>
