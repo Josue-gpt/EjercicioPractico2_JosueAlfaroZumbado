@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="fragments/head :: head"></head>
 
 <body>
@@ -10,40 +11,64 @@
 
     <div class="card shadow p-4">
 
-        <h4 class="text-primary mb-3">Consultas de Eventos</h4>
+        <h4 class="text-primary mb-3">Consultas Avanzadas</h4>
 
-        <form th:action="@{/consultas/buscar}" method="get" class="row g-2 mb-3">
-
-            <div class="col-md-8">
-                <input class="form-control" name="nombre" placeholder="Buscar evento">
-            </div>
-
-            <div class="col-md-4">
-                <button class="btn btn-primary w-100">Buscar</button>
-            </div>
-
+        <!-- Buscar por nombre -->
+        <form th:action="@{/consultas/buscar}" method="get" class="mb-3">
+            <input class="form-control mb-2" name="nombre" placeholder="Buscar por nombre">
+            <button class="btn btn-primary">Buscar</button>
         </form>
 
-        <a class="btn btn-dark mb-3" th:href="@{/consultas/activos}">
-            Ver eventos activos
+        <!-- Eventos activos -->
+        <a class="btn btn-dark mb-3 w-100" th:href="@{/consultas/activos}">
+            Eventos Activos
         </a>
 
-        <table class="table table-hover">
+        <!-- Contar eventos -->
+        <a class="btn btn-dark mb-3 w-100" th:href="@{/consultas/conteo}">
+            Contar eventos activos
+        </a>
 
+        <p th:if="${total != null}" class="fw-bold">
+            Total activos: <span th:text="${total}"></span>
+        </p>
+
+        <!-- Usuarios por rol -->
+        <form th:action="@{/consultas/usuarios}" method="get" class="mb-3">
+            <input class="form-control mb-2" name="rol" placeholder="Ej: ADMIN">
+            <button class="btn btn-primary">Buscar usuarios por rol</button>
+        </form>
+
+        <!-- RESULTADOS EVENTOS -->
+        <table class="table table-hover" th:if="${eventos != null}">
             <thead>
                 <tr>
                     <th>Nombre</th>
                     <th>Fecha</th>
                 </tr>
             </thead>
-
             <tbody>
                 <tr th:each="e : ${eventos}">
                     <td th:text="${e.nombre}"></td>
                     <td th:text="${e.fecha}"></td>
                 </tr>
             </tbody>
+        </table>
 
+        <!-- RESULTADOS USUARIOS -->
+        <table class="table table-hover" th:if="${usuarios != null}">
+            <thead>
+                <tr>
+                    <th>Nombre</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="u : ${usuarios}">
+                    <td th:text="${u.nombre}"></td>
+                    <td th:text="${u.email}"></td>
+                </tr>
+            </tbody>
         </table>
 
     </div>

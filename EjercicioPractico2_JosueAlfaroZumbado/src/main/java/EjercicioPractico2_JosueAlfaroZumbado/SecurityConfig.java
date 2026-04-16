@@ -36,7 +36,6 @@ public class SecurityConfig {
                 .permitAll()
             )
 
-            // 🔥 LOGOUT CORRECTO
             .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/login?logout")

@@ -45,12 +45,8 @@ public class UsuarioServiceImpl implements UsuarioService {
             usuario.setRol(rol);
         }
 
-        // 🔥 NO encriptar porque BD está en texto plano
-        // usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
-
         usuarioRepository.save(usuario);
 
-        // 🔥 ENVIAR CORREO SOLO SI ES NUEVO
         if (esNuevo) {
             try {
                 String contenido = "<h2>Bienvenido " + usuario.getNombre() + "</h2>"

@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package EjercicioPractico2_JosueAlfaroZumbado.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +6,6 @@ import EjercicioPractico2_JosueAlfaroZumbado.domain.Evento;
 import EjercicioPractico2_JosueAlfaroZumbado.repository.EventoRepository;
 import EjercicioPractico2_JosueAlfaroZumbado.service.EventoService;
 
-import java.util.Date;
 import java.util.List;
 
 @Service
@@ -41,12 +36,7 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public List<Evento> eventosActivos() {
-        return eventoRepository.findByActivo(true);
-    }
-
-    @Override
-    public List<Evento> eventosPorFechas(Date inicio, Date fin) {
-        return eventoRepository.findByFechaBetween(inicio, fin);
+        return eventoRepository.findByActivoTrue();
     }
 
     @Override
@@ -56,6 +46,6 @@ public class EventoServiceImpl implements EventoService {
 
     @Override
     public Long contarActivos() {
-        return eventoRepository.contarActivos();
+        return eventoRepository.contarEventosActivos();
     }
 }

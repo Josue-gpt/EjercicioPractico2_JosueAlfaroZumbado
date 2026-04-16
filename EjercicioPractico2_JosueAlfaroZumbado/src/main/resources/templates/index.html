@@ -9,80 +9,80 @@
 
 <div class="container mt-4">
 
-    <!-- TÍTULO -->
-    <div class="text-center mb-4">
-        <h2 class="fw-bold text-primary">Sistema de Gestión de Eventos</h2>
+    <!-- HERO -->
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-primary">Plataforma de Gestión de Eventos</h1>
         <p class="text-muted">
-            Administra usuarios, roles y eventos de manera sencilla y organizada
+            Organiza, administra y consulta eventos de manera eficiente y segura.
         </p>
     </div>
 
-    <!-- TARJETAS -->
+    <!-- INFO PRINCIPAL -->
     <div class="row g-4">
 
-        <!-- USUARIOS -->
         <div class="col-md-4">
-            <div class="card shadow text-center p-3">
-                <h4 class="text-primary">Usuarios</h4>
-                <p class="text-muted">Gestiona cuentas del sistema</p>
-                <a class="btn btn-primary" th:href="@{/usuario/lista}">
-                    Ir a Usuarios
-                </a>
+            <div class="card shadow p-4 h-100">
+                <h5 class="text-primary">Gestión de Usuarios</h5>
+                <p class="text-muted">
+                    Permite administrar las cuentas del sistema, asignar roles y controlar el acceso
+                    según permisos definidos.
+                </p>
             </div>
         </div>
 
-        <!-- ROLES -->
         <div class="col-md-4">
-            <div class="card shadow text-center p-3">
-                <h4 class="text-primary">Roles</h4>
-                <p class="text-muted">Controla permisos del sistema</p>
-                <a class="btn btn-dark" th:href="@{/rol/lista}">
-                    Ir a Roles
-                </a>
+            <div class="card shadow p-4 h-100">
+                <h5 class="text-primary">Administración de Eventos</h5>
+                <p class="text-muted">
+                    Crea y organiza eventos con información detallada como fecha, capacidad y estado,
+                    facilitando su control y visualización.
+                </p>
             </div>
         </div>
 
-        <!-- EVENTOS -->
         <div class="col-md-4">
-            <div class="card shadow text-center p-3">
-                <h4 class="text-primary">Eventos</h4>
-                <p class="text-muted">Administra eventos disponibles</p>
-                <a class="btn btn-primary" th:href="@{/evento/lista}">
-                    Ir a Eventos
-                </a>
+            <div class="card shadow p-4 h-100">
+                <h5 class="text-primary">Consultas Avanzadas</h5>
+                <p class="text-muted">
+                    Realiza búsquedas dinámicas de eventos y usuarios mediante diferentes criterios,
+                    permitiendo obtener información relevante de forma rápida.
+                </p>
             </div>
         </div>
 
     </div>
 
-    <!-- SEGUNDA FILA -->
-    <div class="row g-4 mt-2">
+    <!-- SEGUNDA SECCIÓN -->
+    <div class="row mt-5">
 
-        <!-- CONSULTAS -->
         <div class="col-md-6">
-            <div class="card shadow text-center p-3">
-                <h4 class="text-primary">Consultas</h4>
-                <p class="text-muted">Busca eventos y revisa información</p>
-                <a class="btn btn-dark" th:href="@{/consultas}">
-                    Ir a Consultas
-                </a>
+            <div class="card shadow p-4 h-100">
+                <h5 class="text-primary">Seguridad del Sistema</h5>
+                <p class="text-muted">
+                    La plataforma cuenta con autenticación y control de acceso basado en roles,
+                    garantizando que cada usuario solo pueda acceder a las funcionalidades
+                    autorizadas.
+                </p>
             </div>
         </div>
 
-        <!-- INFO -->
         <div class="col-md-6">
-            <div class="card shadow p-3">
-                <h5 class="text-primary">Información del sistema</h5>
-                <ul class="text-muted">
-                    <li>Gestión completa de usuarios</li>
-                    <li>Control de roles y permisos</li>
-                    <li>Administración de eventos</li>
-                    <li>Consultas dinámicas</li>
-                    <li>Seguridad con Spring Security</li>
-                </ul>
+            <div class="card shadow p-4 h-100">
+                <h5 class="text-primary">Experiencia de Usuario</h5>
+                <p class="text-muted">
+                    La interfaz está diseñada para ser intuitiva, clara y accesible, permitiendo
+                    una navegación fluida y una mejor interacción con el sistema.
+                </p>
             </div>
         </div>
 
+    </div>
+
+    <!-- FOOTER INFO -->
+    <div class="text-center mt-5 text-muted">
+        <small>
+            © 2026 Plataforma de Eventos | Proyecto académico desarrollado con Spring Boot
+        </small>
     </div>
 
 </div>
